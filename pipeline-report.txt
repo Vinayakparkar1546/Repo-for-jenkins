@@ -1,0 +1,138 @@
+Analyze pipeline execution
+
+Pipeline Execution Time: Duration: 2 sec
+
+Successful Stages: 
+1. Clone Source Code       ✅
+2. Install Dependencies    ✅
+3. Build Application       ✅
+4. Run Tests               ✅
+5. Package Application     ✅
+6. Deliver Artifact        ✅
+
+Failed Stages: Failed Stages: None
+
+Build History: 
+#1  SUCCESS
+#2  SUCCESS
+#3  SUCCESS
+...
+
+Console Output Analysis: 
+Started by GitHub push by Vinayakparkar1546
+Obtained Jenkinsfile from git https://github.com/Vinayakparkar1546/Repo-for-jenkins.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on jenkins-agent-1 in /home/jenkins/agent/workspace/Projetc-1
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Fetching changes from the remote Git repository
+Checking out Revision 544aefb81fed8bacb411e84fe176753ecaa0cb47 (refs/remotes/origin/main)
+Commit message: "Update paragraph text in index.html"
+ > git rev-parse --resolve-git-dir /home/jenkins/agent/workspace/Projetc-1/.git # timeout=10
+ > git config remote.origin.url https://github.com/Vinayakparkar1546/Repo-for-jenkins.git # timeout=10
+Fetching upstream changes from https://github.com/Vinayakparkar1546/Repo-for-jenkins.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.53.0'
+ > git fetch --tags --force --progress -- https://github.com/Vinayakparkar1546/Repo-for-jenkins.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 544aefb81fed8bacb411e84fe176753ecaa0cb47 # timeout=10
+ > git rev-list --no-walk 1d5a4de33ca2ab9e6275e95c7c854b96a73824aa # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Clone Source Code)
+[Pipeline] echo
+Cloning source code...
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Fetching changes from the remote Git repository
+Checking out Revision 544aefb81fed8bacb411e84fe176753ecaa0cb47 (refs/remotes/origin/main)
+Commit message: "Update paragraph text in index.html"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Install Dependencies)
+[Pipeline] echo
+Checking required dependencies...
+[Pipeline] sh
+ > git rev-parse --resolve-git-dir /home/jenkins/agent/workspace/Projetc-1/.git # timeout=10
+ > git config remote.origin.url https://github.com/Vinayakparkar1546/Repo-for-jenkins.git # timeout=10
+Fetching upstream changes from https://github.com/Vinayakparkar1546/Repo-for-jenkins.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.53.0'
+ > git fetch --tags --force --progress -- https://github.com/Vinayakparkar1546/Repo-for-jenkins.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 544aefb81fed8bacb411e84fe176753ecaa0cb47 # timeout=10
++ git --version
+git version 2.53.0
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Application)
+[Pipeline] echo
+Building application...
+[Pipeline] sh
++ test -f index.html
++ mkdir -p build
++ cp index.html build/
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run Tests)
+[Pipeline] echo
+Running tests...
+[Pipeline] sh
++ test -f build/index.html
++ grep -q <html build/index.html
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Package Application)
+[Pipeline] echo
+Packaging application...
+[Pipeline] sh
++ tar -czf cartforge-app.tar.gz -C build index.html
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deliver Artifact)
+[Pipeline] echo
+Delivering artifact to Jenkins...
+[Pipeline] archiveArtifacts
+Archiving artifacts
+Recording fingerprints
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+Pipeline completed successfully!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+
+
+Improvements Suggested:
+- Dependency caching
+- Better automated testing
+- Notifications
+- Secure credential management
+- Parallel execution where appropriate
+
